@@ -7,8 +7,12 @@ export default class Form extends React.Component {
   render() {
     return (
       <div className="form">
-        <Input name="name" type="text" placeholder="Nombre" />
-        <Button text="Jugar" />
+        <Input
+          name={this.props.input.name}
+          type={this.props.input.type}
+          placeholder={this.props.input.placeholder}
+        />
+        <Button text={this.props.button.text} />
       </div>
     );
   }
