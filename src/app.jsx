@@ -1,14 +1,18 @@
 import React from "react";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
-import Title from "./components/atoms/title/title.jsx";
-import Input from "./components/atoms/input/input.jsx";
+//Import pages
+import Intro from "./components/pages/intro.jsx";
 
 export default class App extends React.Component {
   render() {
     return (
       <div className="game-container">
-        <Title title="MemoCards" />
-        <Input />
+        <Router>
+          <Switch>
+            <Route exact path="/" component={Intro}></Route>
+          </Switch>
+        </Router>
       </div>
     );
   }
