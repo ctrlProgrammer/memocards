@@ -7,7 +7,8 @@ export default class Input extends React.Component {
     this.defProps = {
       name: "noname",
       type: "notype",
-      placeholder: "noplaceholder"
+      placeholder: "noplaceholder",
+      value: ""
     };
 
     this.propertyValidation();
@@ -42,6 +43,12 @@ export default class Input extends React.Component {
             ? this.props.placeholder
             : this.defProps.placeholder
         }
+        value={
+          this.props.value !== undefined //Validacion de propiedad
+            ? this.props.value
+            : this.defProps.value
+        }
+        onChange={this.props.onChange}
       />
     );
   }
