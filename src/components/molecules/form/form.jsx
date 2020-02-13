@@ -1,13 +1,21 @@
 import React from "react";
 
+import { connect } from "react-redux";
+import { setPlayer } from "./../../../redux/actions/setPlayer.js";
+
 import Input from "./../../atoms/input/input.jsx";
 import Button from "./../../atoms/button/button.jsx";
 
-export default class Form extends React.Component {
+function mapDispatchToProps(dispatch) {
+  return { setPlayer: player => dispatch(setPlayer(player)) };
+}
+
+class ConnectedForm extends React.Component {
   constructor(props) {
     super(props);
 
     this.handleInput = this.handleInput.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
 
     this.state = {
       input: ""
@@ -16,6 +24,11 @@ export default class Form extends React.Component {
 
   handleInput(e) {
     this.setState({ input: e.target.value });
+  }
+
+  handleSubmit(e) {
+    const { input } = this.state;
+    this.props.setPlayer(input);
   }
 
   render() {
@@ -28,8 +41,11 @@ export default class Form extends React.Component {
           placeholder={this.props.input.placeholder}
           value={this.state.input}
         />
-        <Button text={this.props.button.text} />
+        <Button onClick={this.handleSubmit} text={this.props.button.text} />
       </div>
     );
   }
 }
+
+const Form = connect(null, mapDispatchToProps)(ConnectedForm);
+export default Form;

@@ -22,7 +22,7 @@ export default class Button extends React.PureComponent {
 
   render() {
     return (
-      <button>
+      <button onClick={this.props.onClick}>
         {this.props.text !== undefined ? this.props.text : this.defProps.text}
       </button>
     );
