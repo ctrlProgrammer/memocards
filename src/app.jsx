@@ -5,6 +5,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 //Import pages
 import Intro from "./components/pages/intro.jsx";
+import Game from "./components/pages/game.jsx";
 
 export default class App extends React.Component {
   render() {
@@ -14,6 +15,7 @@ export default class App extends React.Component {
           <Router>
             <Switch>
               <Route exact path="/" component={Intro}></Route>
+              <Route exact path="/game" component={Game}></Route>
             </Switch>
           </Router>
         </div>
