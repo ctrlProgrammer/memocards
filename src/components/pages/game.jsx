@@ -1,13 +1,49 @@
 import React from "react";
+import { connect } from "react-redux";
+
+import Title from "./../atoms/title/title";
+import Board from "./../molecules/board/board";
 
 class Game extends React.Component {
+  createCards() {
+    var cards = [];
+    for (var count = 0; count < 5; count++) {
+      const random = Math.floor(Math.random() * 100);
+      cards.push({
+        text: random
+      });
+      cards.push({
+        text: random
+      });
+    }
+    return cards;
+  }
+
+  chaosCards() {
+    var cards = this.createCards();
+    var disordered = [];
+    while (cards.length !== 0) {
+      const rand = Math.floor(Math.random() * cards.length);
+      disordered.push(cards[rand]);
+      cards.splice(rand, 1);
+    }
+    return disordered;
+  }
+
   render() {
     return (
       <div className="game">
-        <h1>Game page</h1>
+        <Title title={"Juega " + this.props.player + "!"} />
+        <Board cards={this.chaosCards()} />
       </div>
     );
   }
 }
 
-export default Game;
+const mapStateToProps = state => {
+  return {
+    player: state.player
+  };
+};
+
+export default connect(mapStateToProps)(Game);
