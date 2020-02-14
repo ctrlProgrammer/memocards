@@ -9,12 +9,12 @@ class Game extends React.Component {
     var cards = [];
     for (var count = 0; count < 5; count++) {
       const random = Math.floor(Math.random() * 100);
-      cards.push({
-        text: random
-      });
-      cards.push({
-        text: random
-      });
+      const obj = {
+        text: random,
+        active: false
+      };
+      cards.push(obj);
+      cards.push(obj);
     }
     return cards;
   }

@@ -9,7 +9,12 @@ export default class Board extends React.Component {
       <div className="board">
         {this.props.cards !== undefined && this.props.cards.length > 0 ? (
           this.props.cards.map((card, index) => (
-            <Card key={index} text={card.text} />
+            <Card
+              active={card.active}
+              key={index}
+              id={index}
+              text={card.text}
+            />
           ))
         ) : (
           <span>No esta bien configurado</span>
