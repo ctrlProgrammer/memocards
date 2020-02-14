@@ -1,9 +1,12 @@
-import { createStore } from "redux";
-import Reducer from "./reducers/index.js";
+import { createStore, combineReducers } from "redux";
+import player from "./reducers/player.js";
 
+const reducer = combineReducers({
+  player
+});
 /**
  * Crea el store basado en los reducers
  */
-const store = createStore(Reducer);
+const store = createStore(reducer);
 
 export default store;
