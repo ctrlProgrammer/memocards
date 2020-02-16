@@ -4,6 +4,7 @@ import Card from "./../../atoms/card/card";
 import closeAll from "../../../redux/actions/card/closeAll";
 import changeStatus from "../../../redux/actions/card/changeStatus";
 import setInmutable from "../../../redux/actions/card/setInmutable";
+import { Redirect } from "react-router-dom";
 import "./board.css";
 
 class ConnectedBoard extends React.Component {
@@ -76,27 +77,31 @@ class ConnectedBoard extends React.Component {
   }
 
   render() {
-    return (
-      <div className="board">
-        {this.props.cards !== undefined && this.props.cards.length > 0 ? (
-          this.props.cards.map(card => {
-            return (
-              <Card
-                handleCard={this.handleCard}
-                key={card.id}
-                active={card.active}
-                id={card.id}
-                text={card.text}
-              />
-            );
-          })
-        ) : (
-          <span>No esta bien configurado</span>
-        )}
-        <div ref={this.cover} className="cover"></div>
-        <span className="response">{this.state.response}</span>
-      </div>
-    );
+    if (this.state.win === true) {
+      return <Redirect to="/end" />;
+    } else {
+      return (
+        <div className="board">
+          {this.props.cards !== undefined && this.props.cards.length > 0 ? (
+            this.props.cards.map(card => {
+              return (
+                <Card
+                  handleCard={this.handleCard}
+                  key={card.id}
+                  active={card.active}
+                  id={card.id}
+                  text={card.text}
+                />
+              );
+            })
+          ) : (
+            <span>No esta bien configurado</span>
+          )}
+          <div ref={this.cover} className="cover"></div>
+          <span className="response">{this.state.response}</span>
+        </div>
+      );
+    }
   }
 }
 
