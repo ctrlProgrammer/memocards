@@ -1,5 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
+import Timer from "../../atoms/timer";
 import Card from "./../../atoms/card/card";
 import closeAll from "../../../redux/actions/card/closeAll";
 import changeStatus from "../../../redux/actions/card/changeStatus";
@@ -98,7 +99,10 @@ class ConnectedBoard extends React.Component {
             <span>No esta bien configurado</span>
           )}
           <div ref={this.cover} className="cover"></div>
-          <span className="response">{this.state.response}</span>
+          <div className="info">
+            <span className="response">{this.state.response}</span>
+            <Timer />
+          </div>
         </div>
       );
     }

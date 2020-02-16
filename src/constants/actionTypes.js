@@ -20,3 +20,4 @@ export const SET_INMUTABLE_CARD = "SET_INMUTABLE_CARD";
  * Points
  */
 export const SET_NEW_POINT = "SET_NEW_POINT";
+export const SET_TIME = "SET_TIME";
