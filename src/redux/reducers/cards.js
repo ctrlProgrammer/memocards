@@ -28,11 +28,8 @@ function reducer(state = defautlState, { type, payload }) {
       return state;
     case SET_INMUTABLE_CARD:
       state.cards.forEach(card => {
-        console.log(card.id, payload);
         if (card.id === payload.id) card.mutable = false;
       });
-      console.log("change mutable to inmutable");
-      console.log(state.cards);
       return state;
     default:
       return state;
