@@ -15,3 +15,8 @@ export const GET_CARD = "GET_CARD";
 export const SET_CARDS = "SET_CARDS";
 export const CLOSE_ALL_CARDS = "CLOSE_ALL_CARDS";
 export const SET_INMUTABLE_CARD = "SET_INMUTABLE_CARD";
+
+/**
+ * Points
+ */
+export const SET_NEW_POINT = "SET_NEW_POINT";
