@@ -10,7 +10,6 @@ const defautlState = 0;
 function reducer(state = defautlState, { type, payload }) {
   switch (type) {
     case CHANGE_STATE:
-      console.log(payload);
       state = payload;
       return state;
     default:

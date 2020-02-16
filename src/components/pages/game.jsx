@@ -1,5 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
+import setCards from "../../redux/actions/card/setCards";
 
 import Title from "./../atoms/title/title";
 import Board from "./../molecules/board/board";
@@ -7,14 +8,23 @@ import Board from "./../molecules/board/board";
 class Game extends React.Component {
   createCards() {
     var cards = [];
+    var counter = 1;
     for (var count = 0; count < 5; count++) {
-      const random = Math.floor(Math.random() * 100);
-      const obj = {
+      const random = Math.floor(Math.random() * 1000);
+      cards.push({
         text: random,
-        active: false
-      };
-      cards.push(obj);
-      cards.push(obj);
+        id: counter,
+        active: false,
+        mutable: true
+      });
+      counter++;
+      cards.push({
+        text: random,
+        id: counter,
+        active: false,
+        mutable: true
+      });
+      counter++;
     }
     return cards;
   }
@@ -27,6 +37,7 @@ class Game extends React.Component {
       disordered.push(cards[rand]);
       cards.splice(rand, 1);
     }
+    this.props.setCards(disordered);
     return disordered;
   }
 
@@ -46,4 +57,8 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(mapStateToProps)(Game);
+const mapDispatchToProps = {
+  setCards
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Game);

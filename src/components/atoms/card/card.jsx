@@ -1,18 +1,9 @@
 import React from "react";
-import Parag from "./../parag/parag";
 
+import Parag from "./../parag/parag";
 import "./card.css";
 
-export default class Card extends React.PureComponent {
-  constructor(props) {
-    super(props);
-
-    this.cardClick = this.cardClick.bind(this);
-  }
-  cardClick(e) {
-    console.log(this.props);
-  }
-
+export default class Card extends React.Component {
   render() {
     var cardClass = "card ";
     cardClass +=
@@ -21,7 +12,11 @@ export default class Card extends React.PureComponent {
         : "";
 
     return (
-      <div className={cardClass} onClick={this.cardClick} ref={this.card}>
+      <div
+        className={cardClass}
+        onClick={() => this.props.handleCard(this.props.id, this.props.text)}
+        ref={this.card}
+      >
         <div className="flip-card">
           <div className="flip-card-inner">
             <div className="flip-card-front">
