@@ -15,8 +15,7 @@ class ConnectedIntro extends React.Component {
             {this.props.points.map(point => {
               return (
                 <li>
-                  user: {point.player}, points: {point.point}, date:{" "}
-                  {point.date.getTime()}
+                  user: {point.player}, Time: {point.point}
                 </li>
               );
             })}
