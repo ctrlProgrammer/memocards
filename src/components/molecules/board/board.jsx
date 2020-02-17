@@ -5,6 +5,7 @@ import Card from "./../../atoms/card/card";
 import closeAll from "../../../redux/actions/card/closeAll";
 import changeStatus from "../../../redux/actions/card/changeStatus";
 import setInmutable from "../../../redux/actions/card/setInmutable";
+import setNewPoint from "../../../redux/actions/point/setNew";
 import { Redirect } from "react-router-dom";
 import "./board.css";
 
@@ -20,7 +21,7 @@ class ConnectedBoard extends React.Component {
 
   handleCard(id) {
     if (this.state.win === false) {
-      const cards = this.props.cards;
+      const cards = this.props.cards.cards;
       var active = [];
 
       this.props.changeStatus(true, id);
@@ -56,12 +57,13 @@ class ConnectedBoard extends React.Component {
   }
 
   validateAllCards() {
-    const cards = this.props.cards;
+    const cards = this.props.cards.cards;
     var count = 0;
     cards.forEach(card => {
       if (card.mutable === false) count++;
     });
     if (count >= cards.length - 1) {
+      this.props.setNewPoint(this.props.player, this.props.timer);
       this.setState({ response: "Ganaste", win: true });
     }
   }
@@ -83,8 +85,9 @@ class ConnectedBoard extends React.Component {
     } else {
       return (
         <div className="board">
-          {this.props.cards !== undefined && this.props.cards.length > 0 ? (
-            this.props.cards.map(card => {
+          {this.props.cards.cards !== undefined &&
+          this.props.cards.cards.length > 0 ? (
+            this.props.cards.cards.map(card => {
               return (
                 <Card
                   handleCard={this.handleCard}
@@ -110,13 +113,18 @@ class ConnectedBoard extends React.Component {
 }
 
 const mapStateToProps = state => {
-  return state.cards;
+  return {
+    cards: state.cards,
+    player: state.player,
+    timer: state.timer
+  };
 };
 
 const mapDispatchToProps = {
   closeAll,
   changeStatus,
-  setInmutable
+  setInmutable,
+  setNewPoint
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(ConnectedBoard);

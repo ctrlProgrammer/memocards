@@ -1,9 +1,10 @@
 import { SET_NEW_POINT } from "./../../../constants/actionTypes";
 
-const setNew = point => {
+const setNew = (player, point) => {
+  const date = new Date();
   return {
     type: SET_NEW_POINT,
-    payload: point
+    payload: { player, point, date }
   };
 };
 
