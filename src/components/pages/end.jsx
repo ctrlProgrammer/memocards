@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import Title from "./../atoms/title/title";
+import Title from "../atoms/title";
 
 class ConnectedIntro extends React.Component {
   render() {

@@ -1,6 +1,6 @@
 import React from "react";
 
-import Title from "./../atoms/title/title.jsx";
+import Title from "./../atoms/title";
 import Form from "./../molecules/form/form.jsx";
 
 export default class Intro extends React.Component {

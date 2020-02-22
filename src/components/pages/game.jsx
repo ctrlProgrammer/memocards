@@ -2,7 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import setCards from "../../redux/actions/card/setCards";
 
-import Title from "./../atoms/title/title";
+import Title from "../atoms/title";
 import Board from "./../molecules/board/board";
 
 class Game extends React.Component {
