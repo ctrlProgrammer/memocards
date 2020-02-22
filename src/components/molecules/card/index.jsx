@@ -1,6 +1,6 @@
 import React from "react";
 
-import Parag from "../../atoms/parag/parag";
+import Parag from "../../atoms/parag";
 import Title from "../../atoms/title/title";
 import "./index.css";
 
