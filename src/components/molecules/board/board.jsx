@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import Timer from "../../atoms/timer";
-import Card from "./../../atoms/card/card";
+import Card from "../card";
 import closeAll from "../../../redux/actions/card/closeAll";
 import changeStatus from "../../../redux/actions/card/changeStatus";
 import setInmutable from "../../../redux/actions/card/setInmutable";
