@@ -8,18 +8,16 @@ import Form from "../molecules/form/form.jsx";
 //redux
 import { connect } from "react-redux";
 import setPlayer from "../../redux/actions/player/setPlayer";
+import changeState from "../../redux/actions/game/changeState";
 
 class Intro extends React.Component {
   constructor(props) {
     super(props);
 
-    //State
     this.state = {
-      playerSet: false,
       error: ""
     };
 
-    // Form properties
     this.form = {
       input: {
         name: "name",
@@ -31,7 +29,6 @@ class Intro extends React.Component {
       }
     };
 
-    //bind all functions
     this.handleInput = this.handleInput.bind(this);
   }
 
@@ -40,16 +37,16 @@ class Intro extends React.Component {
 
     const userName = e.currentTarget[0].value;
 
-    if (userName) {
+    if (userName && userName !== "") {
       this.props.setPlayer(userName);
-      this.setState({ playerSet: true });
+      this.props.changeState(1);
     } else {
       this.setState({ error: "Debes colocar tu nombre" });
     }
   }
 
   render() {
-    if (this.state.playerSet) {
+    if (this.props.game === 1) {
       return <Redirect to="/game" />;
     } else {
       return (
@@ -68,12 +65,14 @@ class Intro extends React.Component {
 }
 
 const mapDispatchToProps = {
-  setPlayer
+  setPlayer,
+  changeState
 };
 
 const mapStateToProps = state => {
   return {
-    player: state.player
+    player: state.player,
+    game: state.game
   };
 };
 
