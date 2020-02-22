@@ -38,7 +38,7 @@ class ConnectedForm extends React.Component {
       return <Redirect to="/game" />;
     } else {
       return (
-        <div className="form">
+        <form className="form" onSubmit={e => this.props.handleInput(e)}>
           <Input
             onChange={this.handleInput}
             name={this.props.input.name}
@@ -46,9 +46,8 @@ class ConnectedForm extends React.Component {
             placeholder={this.props.input.placeholder}
             value={this.state.input}
           />
-          <Button onClick={this.handleSubmit} text={this.props.button.text} />
-          {this.props.player}
-        </div>
+          <Button text={this.props.button.text} />
+        </form>
       );
     }
   }
