@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import setCards from "../../redux/actions/card/setCards";
 
 import Title from "../atoms/title";
-import Board from "./../molecules/board/board";
+import Board from "../organisms/board";
 
 class Game extends React.Component {
   createCards() {

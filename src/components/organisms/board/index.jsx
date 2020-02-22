@@ -1,13 +1,17 @@
 import React from "react";
+
+// Redux
 import { connect } from "react-redux";
-import Timer from "../../atoms/timer";
-import Card from "../card";
 import closeAll from "../../../redux/actions/card/closeAll";
+import setNewPoint from "../../../redux/actions/point/setNew";
 import changeStatus from "../../../redux/actions/card/changeStatus";
 import setInmutable from "../../../redux/actions/card/setInmutable";
-import setNewPoint from "../../../redux/actions/point/setNew";
+
+import Timer from "../../atoms/timer";
+import Card from "../../molecules/card";
+
 import { Redirect } from "react-router-dom";
-import "./board.css";
+import "./index.css";
 
 class ConnectedBoard extends React.Component {
   constructor(props) {
