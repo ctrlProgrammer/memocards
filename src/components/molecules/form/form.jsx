@@ -7,7 +7,7 @@ import getPlayer from "./../../../redux/actions/player/getPlayer.js";
 import changeState from "./../../../redux/actions/game/changeState.js";
 
 import Input from "./../../atoms/input/input.jsx";
-import Button from "./../../atoms/button/button.jsx";
+import Button from "./../../atoms/button";
 
 class ConnectedForm extends React.Component {
   constructor(props) {
