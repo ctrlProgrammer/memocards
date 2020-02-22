@@ -1,8 +1,9 @@
 import React from "react";
 
-import Title from "./../atoms/title";
+import Error from "../atoms/error";
+import Title from "../atoms/title";
 import { Redirect } from "react-router-dom";
-import Form from "./../molecules/form/form.jsx";
+import Form from "../molecules/form/form.jsx";
 
 //redux
 import { connect } from "react-redux";
@@ -14,7 +15,8 @@ class Intro extends React.Component {
 
     //State
     this.state = {
-      playerSet: false
+      playerSet: false,
+      error: ""
     };
 
     // Form properties
@@ -42,7 +44,7 @@ class Intro extends React.Component {
       this.props.setPlayer(userName);
       this.setState({ playerSet: true });
     } else {
-      console.log("Debes colocar tu nombre");
+      this.setState({ error: "Debes colocar tu nombre" });
     }
   }
 
@@ -58,6 +60,7 @@ class Intro extends React.Component {
             input={this.form.input}
             button={this.form.button}
           />
+          {this.state.error !== "" ? <Error text={this.state.error} /> : ""}
         </div>
       );
     }
